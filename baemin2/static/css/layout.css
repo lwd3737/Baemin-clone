@@ -1,0 +1,137 @@
+@media(max-width:768px){
+	div.navbar{
+		padding:0 !important;
+		height:60px !important;
+	}
+
+	div#nav-left{
+		
+		margin:0 !important;
+	}
+
+	a.navbar-brand{
+		margin:0 !important;
+		padding-left:20px !important;
+		margin-right:auto;
+	}
+
+	a.navbar-brand img{
+		height:30px !important;
+		width:72px !important;
+	}
+
+	div#nav-right{
+		
+	}
+
+	div#nav-right button{
+		width:108px !important;
+		font-size:12px !important;
+		margin-top:15px !important;
+		margin-left:7px;
+		padding:0;
+		border-color:rgba(255,255,255,0.5) !important;
+	}
+
+	div#nav-right button:hover{
+		background-color:#DC1400 !important;
+		cursor:pointer;
+	}
+
+	div#nav-right span{
+		display:none !important;
+	}
+
+
+	a#toggler-group{
+		
+		text-align:right !important;
+		margin-left:auto;
+	}
+
+	div#search{
+		display:none;
+	}
+}
+
+@media(min-width:768px;){
+
+}
+
+div#nav-right{
+	min-width:312px;
+}
+
+div#nav-right button{
+	width:167px;
+}
+
+div#nav-right button:hover{
+	background-color:#DC1400 !important;
+	cursor:pointer;
+}
+
+div#nav-right span{
+	display:inline-block;
+	width:105px;
+}
+
+div#nav-right span:hover{
+	cursor:pointer;
+}
+
+div.footer-menu ul{
+	list-style: none;
+	border-top:1px solid #ece9e9;
+	border-bottom:1px solid #ece9e9;
+}
+
+div.footer-menu ul li{
+	text-decoration:none;
+	margin-right:7px;
+	padding:7px;
+
+}
+div.footer-menu ul li a{
+	color:gray;
+	font-size:12px;
+}
+
+div.footer-menu ul li a:hover{
+	text-decoration:none;
+}
+
+li.sns-link i{
+	font-size:16px;
+}
+
+i.icon-facebook-squared{
+	color:blue;
+}
+
+i.icon-blogger-rect{
+	color:green;
+}
+
+div.company-info{
+	float:left !important;
+	padding-left:70px;
+	font-size:13px;
+	font-weight:lighter;
+}
+
+
+div.service-info{
+	font-size:13px;
+	color:gray;
+
+}
+
+span.text{
+	display:inline-block;
+	font-size:12px;
+	color:gray;
+	width:70px;
+	height:38px;
+	vertical-align:middle;
+}
