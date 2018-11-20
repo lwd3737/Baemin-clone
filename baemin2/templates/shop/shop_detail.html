@@ -1,0 +1,388 @@
+{% extends 'shop/category_menu.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'shop/css/shop_detail.css' %}?ver=3" />
+{% endblock %}
+
+{% block content %}
+<div class="container px-5">
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="restaurant-info mt-3">
+				<div class="restaurant-title p-2">
+					<span>{{ shop.name }}</span>
+				</div>
+				<div class="restaurant-content d-flex flex-row">
+					<img class="logo m-2" src="{{ shop.photo.url }}">
+					<ul>
+						<li>
+							<span class="star-review">
+								<span class="star-1">★</span>
+								<span class="star-2">★</span>
+								<span class="star-3">★</span>
+								<span class="star-4">★</span>
+								<span class="star-5">★</span>
+							</span>
+							<span class="ml-1">
+								{% if shop.review.total_review %}
+									{{ total_review }}
+								{% endif %}
+							</span>
+						</li>
+						<li>
+							최소주문금액
+							<span>{{ shop.shopdesc.min_order_amount|intcomma }}</span>
+						</li>
+						<li>결제
+							<span>{{ shop.shopdesc.method_of_payment }}</span>
+						</li>
+						<li>
+							배달시간
+							<span>{{ shop.shopdesc.delivery_time }}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="owner-intro-message">
+				{% if shop.shopdesc %}
+					<span>사장님알림</span>&nbsp;
+					{{ shop.shopdesc.intro_message|slice:":50" }}
+					{% if shop.shopdesc.intro_message|length >= 50 %}
+						...
+					{% endif %}
+				{% endif %}
+			</div>
+
+			<ul class="nav nav-pills nav-fill restaurant-tab mt-3" id="myTab" role="tablist">
+				<li class="nav-item" style="border-right:1px solid rgba(0,0,0,0.15);">
+					<a class="nav-link active" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="true">
+						메뉴
+					</a>
+				</li>
+				<li class="nav-item" style="border-right:1px solid rgba(0,0,0,0.15);">
+					<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">
+						클린리뷰
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">
+						정보
+					</a>
+				</li>
+			</ul>
+
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labeledby="menu-tab">
+					<div class="photo-menu-container p-3 px-4">
+						<div class="photo-menu-items">
+							<span class="btn-left" onclick="btnLeft();">
+								<i class="icon-left-open-big"></i>
+							</span>
+							<span class="btn-right" onclick="btnRight();">
+								<i class="icon-right-open-big"></i>
+							</span>
+							<div class="photo-slice">
+								<div class="card-deck">
+									{% for menu in rep_menu.item_set.all %}
+										<div class="card mx-1" style="width:138px; height:166px;">
+											<img class="card-img-top mt-1" src="{{ menu.photo.url }}"
+												style="width:138px; height:98px;"/>
+											<div class="card-body pt-2">
+												<h4 class="card-title">{{ menu.name }}</h4>
+												<p class="card-text">{{ menu.amount|intcomma }}원</p>
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<ul class="list-group menu-category-list">
+						{% for menu in menu_category %}
+						<li class="list-group-item" style="background-color:#eceef1;">
+							<a class="category_menu_name" data-toggle="collapse" href="#menu-{{ menu.id }}"
+								aria-expanded="false" aria-controls="menu-{{ menu.id }}">
+								{% if menu.name == '인기메뉴' %}
+									<span style="width:28px; height:28px;">
+										<img src="https://www.yogiyo.co.kr/mobile/image/ico_favmenu.png"
+												style="width:18px; height:18px;"/>
+									</span>
+								{% endif %}
+								{{ menu.name }}
+							</a>
+						</li>
+
+						<div class="collapse" id="menu-{{ menu.id }}">
+							<ul class="list-group">
+								{% for food in menu.item_set.all %}
+									<li class="list-group-item">
+										<table>
+											<tr>
+												<td class="mr-auto">
+													<div class="food-name">
+														{{ food.name }}
+													</div>
+													<div class="food-desc">
+														{{ food.desc}}
+													</div>
+													<div class="food-price">
+														{{ food.amount|intcomma }}원
+													</div>
+												</td>
+												<td>
+													<div class="food-photo">
+														{% if food.photo %}
+														<img src="{{ food.photo.url }}" / style="width:112px; height:80px;">
+														{% endif %}
+													</div>
+												</td>
+											</tr>
+										</table>
+									</li>
+								{% endfor %}
+							</ul>
+					</div>
+						{% endfor %}
+					</ul>
+
+					<div class="labels">
+						<a href="#">원산지 정보 &rsaquo;</a>
+						<a href="#">영양성분 정보 &rsaquo;</a>
+						<a href="#">알레르기 유발 정보 &rsaquo;</a>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="review" role="tabpanel" aria-labeledby="review-tab">
+					<div class="star-point-wrap">
+						<div class="inner">
+							<div class="restaurant-star-point">
+								<strong>{{ total_review }}</strong>
+								<span class="star-point">
+									<span class="star-1">★</span>
+									<span class="star-2">★</span>
+									<span class="star-3">★</span>
+									<span class="star-4">★</span>
+									<span class="star-5">★</span>
+								</span>
+							</div>
+
+							<ul class="star-point-list">
+								<li>
+									<span class="category-tit">맛</span>
+									<span class="star-point">
+										<span class="flavor-star-1">★</span>
+										<span class="flavor-star-2">★</span>
+										<span class="flavor-star-3">★</span>
+										<span class="flavor-star-4">★</span>
+										<span class="flavor-star-5">★</span>
+									</span>
+									<span class="points">
+										{{ flavor_rate }}
+									</span>
+								</li>
+								<li>
+									<span class="category-tit">양</span>
+									<span class="star-point">
+										<span class="amount-star-1">★</span>
+										<span class="amount-star-2">★</span>
+										<span class="amount-star-3">★</span>
+										<span class="amount-star-4">★</span>
+										<span class="amount-star-5">★</span>
+									</span>
+									<span class="points">
+										{{ amount_rate }}
+									</span>
+								</li>
+								<li>
+									<span class="category-tit">배달</span>
+									<span class="star-point">
+										<span class="delivery-star-1">★</span>
+										<span class="delivery-star-2">★</span>
+										<span class="delivery-star-3">★</span>
+										<span class="delivery-star-4">★</span>
+										<span class="delivery-star-5">★</span>
+									</span>
+									<span class="points">
+										{{ delivery_rate }}
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="review-count d-flex flex-row">
+						리뷰 <strong class="review"></strong>개/
+						사장님댓글 <strong class="owner"></strong>개
+						<div class="opt-btn d-flex flex-row ml-auto">
+							<span>사진리뷰만</span>
+							<div class="switch">
+								<input id=cmd-toggle type="checkbox" />
+								<label for="cmd-toggle">
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<ul class="list-group review-list">
+						{% for review in shop.review_set.all %}
+						<li class="list-group-item review-item">
+							<div>
+								<span class="review-id">
+									{{ review.author.username|slice:':2' }}**님
+								</span>
+								<span class="review-time">
+									{{ review.get_datetime_format }}
+								</span>
+								<a class="ml-auto" href="#">신고</a>
+							</div>
+
+							<div class="star-point">
+								<span class="total" id="review-{{ review.id }}">
+										<span class="total-star-1">★</span>
+										<span class="total-star-2">★</span>
+										<span class="total-star-3">★</span>
+										<span class="total-star-4">★</span>
+										<span class="total-star-5">★</span>
+								</span>
+
+								<span class="category">
+									<span class="category-tit">맛</span>
+									<span class="full">★</span>
+									<span class="points">{{ review.flaver_rating }}</span>
+									<span class="category-tit">양</span>
+									<span class="full">★</span>
+									<span class="points">{{ review.amount_of_food_rating }}</span>
+									<span class="category-tit" style="display:inline;">배달</span>
+									<span class="full">★</span>
+									<span class="points">{{ review.delivery_rating }}</span>
+								</span>
+							</div>
+
+							{% if review.photo %}
+							<div class="review-photo" style="width:628px; height:314px;">
+								<img src="{{ review.photo.url }}" style="width:628px; height:314px"/>
+							</div>
+							{% endif %}
+
+							<div class="order-items">
+
+							</div>
+
+							<p class="review-comment">
+								{{ review.message }}
+							</p>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="tab-pane fade" id="info" role="tabpanel" aria-labeledby="info-tab">
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4 restaurant-cart">
+			<div class="sub-title">
+				주문표
+			</div>
+			<div class="cart">
+				<div class="cart-empty">
+					주문표에 담긴 메뉴가 없습니다.
+				</div>
+				<div class="cart-btn">
+					주문하기
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extrascript %}
+<script src="{% static 'shop/js/script.js' %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#myTab a:first').css('border-bottom', '5px solid red').css('background-color', 'white');
+		$('#myTab a:first').on('hidden.bs.tab', function(e){
+			$(this).css('border-bottom', '');
+		});
+
+		$('a.nav-link').on('click', function(e){
+			$(this).on('hidden.bs.tab', function(e){
+				$(this).css('border-bottom', '');
+			})
+			$(this).css('border-bottom', '5px solid red').css('background-color', 'white');
+		})
+		//btn-left, btn-right 스크롤
+		function btnLeft(){
+				$(this).scrollLeft(-2500);
+		}
+
+		function btnRight(){
+				$(this).scrollLeft(2500);
+		}
+
+		//shop_detail에서 restaurant-info 없애기
+		var pattern = /shop\/category\/(\d+)\/shop\/(\d+)/;
+		if(pattern.test(location.pathname)){
+			(function(){
+				$('.restaurant-search-info').css('display', 'none');
+			})();
+		}
+
+		//주문표 레이아웃 고정시키기
+		(function(){
+			var cart = document.querySelector('.restaurant-cart');
+			
+
+
+		})();
+
+		//review 별표로 나타내기
+		(function(){
+			var total_review = {{ total_review }};
+			var total_star_count = Math.floor(total_review);
+
+			if(total_star_count >= 1){
+				for(var i=1; i<=total_star_count; i++){
+					$('.star-'+i.toString()).css('color', 'orange');
+				}
+			}
+
+			//맛, 양, 배달 평점 별표로 나타내기
+			var review_category = [Math.floor({{ flavor_rate }}),
+				Math.floor({{ amount_rate }}),
+				Math.floor({{ delivery_rate }})];
+			var review_category_name = ['flavor', 'amount', 'delivery'];
+
+			for(var i=0; i<3; i++){
+				for(var j=0; j<review_category[i]; j++)
+					$('.' + review_category_name[i] + '-star-' + (j+1).toString()).css('color', 'orange');
+			}
+
+			//각 리뷰의 평점 별로 나타내기
+			var review_id_list = {{ review_id_list }};
+			var total_review_list = {{ total_review_list }};
+			//서버에서 json.dumps를 사용해서 데이터를 json형식으로 바꿔서 클라이언트 단으로
+			//전달했는데 자동으로 자바스크립트 객체로 변환되어 있음. 왜 그런 줄 모르겠음.
+			var review = {
+				review_id:review_id_list,
+				total_review:total_review_list,
+			}
+
+			for(var i=0; i<review_id_list.length; i++){
+				var review_tag = $('#review-' + review.review_id[i].toString());
+				var total_review = Math.floor(review.total_review[i]);
+
+				for(var j=0; j<=total_review; j++){
+					var total_star = '.total-star-' + (j+1).toString();
+					review_tag.find(total_star).css('color', 'orange');
+				}
+			}
+		})();
+	});
+
+</script>
+{% endblock %}

@@ -1,0 +1,12 @@
+.div#search{
+	background-position-y:bottom;
+	height:100px !important;
+}
+
+.restaurant-list{
+	color:black !important;
+}
+
+.restaurant-list:hover{
+	text-decoration:none;
+}

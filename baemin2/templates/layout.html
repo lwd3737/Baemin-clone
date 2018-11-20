@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial=1.0" />
+	<title>{% block title %}요기요 - 즐거운 식탁이 찾아온다. 배달음식 주문은 역시 요기요!{% endblock %}</title>
+	{% block extrastyle %}
+	{% endblock %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/mapfont/css/lim.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/target/css/lim.css' %}" />
+	<link rel="stylesheet" href="{% static 'shop/css/fontello-social/css/lim.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/layout.css' %}?ver=1" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static '/imgs/arrow/css/lim.css' %}?ver=1" />
+	<style type="text/css">
+		*{
+			box-sizing:border-box;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="navbar navbar-expand-md navbar-light px-5" style="background-color:#DC1400; height:78px;">
+			<div class="container-fluid">
+				<div class="row" style="width:100%;">
+					<div class="mr-auto" id="nav-left">
+						<a class="navbar-brand ml-5 pl-5 " href="{% url 'home' %}">
+							<img src="https://www.yogiyo.co.kr/mobile//image/logo-yogiyo.png?v=6bb07e9577b366eb31eb47037e0953da68285974" style="width:90px; height:38px;" />
+						</a>
+					</div>
+
+					<div id="nav-right">
+						{% if not user.authenticated %}
+						<button type="button" class="btn btn-outline-primary mt-1 mr-1" style="color:white; font-size:18px; border-color:white;">로그인 | 회원가입
+						</button>
+						{% endif %}
+						<span style="font-size:18px; background-color:#ff8a00; border-color:#ff8a00; padding:7px 15px; border-radius:5px; position:relative; top:6px; color:white;">
+								주문표(0)
+						</span>
+
+					</div>
+
+					<a id="toggler-group" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseSearch">
+							<button class="navbar-toggler mt-2" type="button">
+								<i class="icon-location" style="color:white;"></i>
+							</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		<div id="search" style="height:237px; background-image:url({% static 'imgs/bg-top.png' %}); background-position:center;">
+			<div class="container">
+				<div class="row justify-content-center">
+					<form class="form-inline mt-5 pt-5" action="" method="get">
+						<span class="align-top mt-4 mr-2" style="background-color:white; width:40px; height:40px; border-radius:20%;">
+							<a href="#">
+								<i class="fas fa-bullseye" style="font-size:25px; color:red; position:relative;  left:7px; top:8px;"></i>
+							</a>
+						</span>
+						<div class="input-group mt-4">
+							<input class="form-control" type="search" placeholder="예) 역삼동, 신림동" aria-label="Search" style="width:288px;/>
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="button" style="background-color:rgba(255, 138, 0);">검색</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div id="category_menu">
+	{% block category_menu %}
+	{% endblock %}
+	</div>
+
+	{% block content %}
+	{% endblock %}
+
+	<footer>
+		<div class="footer-menu mt-3">
+			<ul class="d-flex flex-row justify-content-center">
+				<li>
+					<a href="#">이용약관&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li>
+					<a href="#">개인정보처리방침&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li>
+					<a href="#">통합포인트정책&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li>
+					<a href="#">채용정보&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li>
+					<a href="#">요기요사장님&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li>
+					<a href="#">입점문의&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+				<li class="mr-5">
+					<a href="#">공지사항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| </a>
+				</li>
+
+				<li class="sns-link ml-5 pl-3">
+					<a class="mr-3" href="#"><span><i class="icon-facebook-squared"></i></span>facebook</a>
+					<a href="#"><span><i class="icon-blogger-rect"></i></span>블로그</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="company-wrap">
+			<div class="container">
+				<div class="d-flex flex-row mx-5">
+					<div class="company-logo" style="display:inline-block;">
+						<a href="#">
+							<img src="{% static 'shop/imgs/img-footer.png' %}" />
+						</a>
+					</div>
+					<div class="company-info">
+						<p>
+							<strong style="font-weight:bold">(유)알지피코리아</strong>
+							<br />
+							<br />
+							서울시 강남구 테헤란로 5길 7 KG타워 10, 11, 12층 유한회사 알지피코리아
+							<span class="bar">|</span>
+							대표자:강신봉
+							<span class="bar">|</span>
+							사업자등록번호:211-88-68802
+							<a href="#" target="_blank" class="biz-info">사업자정보확인</a>
+							통신판매업신고:제 2011-서울강남-03322호
+							<span class="bar">|</span>
+							개인정보담당자 :
+							<a href="mailto:privacy@yogiyo.co.kr">privacy@yogiyo.co.kr</a>
+							<span class="bar">|</span>
+							제휴문의 :
+							<a href="mailto:partnership@rgpkorea.co.kr">partnership@rgpkorea.co.kr</a>
+							<span class="bar">|</span>
+							고객만족센터 :
+							<a href="mailto:support@yogiyo.co.kr">support@yogiyo.co.kr</a>
+							<span class="bar">|</span>
+							호스트서비스사업자 : (주)심플렉스인터넷
+						</p>
+					</div>
+
+					<div class="service-info">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="service-wrap mt-4">
+			<div class="container">
+				<div class="d-flex flex-row ml-5 pl-5">
+					<div class="bgp mr-3 ml-5 pl-5">
+						<span class="img">
+							<img src="{% static 'shop/imgs/img-footer2.png' %}" />
+						</span>
+						<span class="text">
+							요기요 안심센터
+						</span>
+					</div>
+
+					<div class="cleanreview">
+						<span class="img">
+							<img src="{% static 'shop/imgs/img-footer3.png' %}" />
+						</span>
+						<span class="text">
+							요기요 100% 클린리뷰
+						</span>
+					</div>
+
+					<div class="csc ml-5">
+						<em style="font-size:20px;">고객만족센터</em>
+						&nbsp;&nbsp;&nbsp;
+						<strong style="font-size:18px;">02-3447-3612</strong>
+						&nbsp;&nbsp;&nbsp;
+						<span style="font-size:12px; color:gray;">24시간, 연중무휴</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="giude mt-4">
+			<div class="container">
+				<div class="row">
+					<p style="font-size:12px; color:gray; margin:0 60px 100px 100px; padding-left:100px">
+						유한회사 알지피코리아는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품/ 거래정보 및 거래와 관련하여 요기요에 등록된 판매자의 고의 또는 과실로 소비자에게 발생하는 손해에 대해 유한회사 알지피코리아는 책임을 지지 않습니다. 상품 및 거래에 관하여 보다 정확한 정보는 해당 판매자에게 직접 확인하여 주시기 바랍니다. Copyright YOGIYO. All Rights Reserved.
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});
+	</script>
+
+	{% block extrascript %}
+	{% endblock %}
+
+</body>
+</html>

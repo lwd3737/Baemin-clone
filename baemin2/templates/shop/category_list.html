@@ -1,0 +1,51 @@
+{% extends 'shop/layout.html' %}
+{% load staticfiles %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'shop/css/category_list.css' %}?ver=3" />
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center mt-3">
+		<div class="d-flex flex-wrap justify-content-center">
+			<div class="card" id="event" style="width:242px; height:220px;">	
+				<img class="card-img-top" src="{% static 'shop/imgs/event.png' %}" />	
+			</div>
+			
+			<div class="card" id="categry-all" style="width:242px; height:220px;">
+				<img class="card-img" src="{% static 'shop/imgs/all.png' %}" />
+				<div class="card-img-overlay">
+					<h5 class="card-title mb-0">전체보기</h5>
+					<small class="card-text">View All
+					</small>
+				</div>			
+			</div>
+			
+			
+			{% for category in category_list %}
+				<div class="card" style="height:220px; width:242px;">
+
+					<a href="{{ category.get_absolute_url }}" />
+					{% if category.icon %}
+					<img class="card-img" src="{{ category.icon.url }}" style="width:238px; height:218px;"/>
+					{% endif %}
+					<div class="card-img-overlay">
+						<h5 class="card-title mb-0">
+							{{ category.name }}
+						</h5>
+						<small class="card-text">
+							{{ category.en_name }}
+						</small>
+					</div>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extrascript %}
+{% endblock %}

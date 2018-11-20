@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block category_menu %}
+<div class="category-menu" style="border-bottom:1px solid #dad7d7; height:60px; box-shadow:2px 2px 3px 0px rgba(0,0,0,0.25);">
+	<div class="container" style="height:100%">
+		<div class="row justify-content-center" id="menu-wrapper" style="height:100%">
+			<ul class="d-flex flex-row mt-3" id="menu_list" style="list-style:none; font-size:14px;">
+				<li class="pb-5" id="menu-search" style="position:relative; bottom:5px;">
+					<a class="" data-toggle="collapse" href="#menu-search-collapse" aria-expanded="false" aria-controls="menu-search-collapse">
+						<i class="fas fa-search pt-2" style="width:35px; height:34px; color:red; font-size:19px; border:1px solid rgba(0,0,0,0.15); border-radius:20%;"></i>
+					</a>
+				</li>
+				<div class="collapse ml-4" id="menu-search-collapse" style="position:absolute; top:225px;">
+					<form id="search-form" method="get">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="음식점이나 메뉴를 검색해보세요." aria-label="음식점이나 메뉴를 검색해 보세요." name="search"  style="width:240px; font-size:13px;"/>
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" style="background-color:orange;"><i class="fas fa-search"></i></button>
+							</span>
+						</div>
+					</form>
+				</div>
+
+
+				<li class="category" id="all" style="border-left:1px solid #bbb4b49c";><span>전체보기</span></li>
+				<li class="category" id="franchise" style="border-left:1px solid #bbb4b49c";><span>프랜차이즈</span></li>
+				<li class="category" id="chicken" style="border-left:1px solid #bbb4b49c;"><span>치킨</span></li>
+				<li class="category" id="pizzawestern-food" style="border-left:1px solid #bbb4b49c;"><span>피자/양식</span></li>
+				<li class="category" id="chinese-food" style="border-left:1px solid #bbb4b49c;"><span>중국집</span></li>
+				<li class="category" id="korean-food" style="border-left:1px solid #bbb4b49c;"><span>한식</span></li>
+				<li class="category" id="japanese-food" style="border-left:1px solid #bbb4b49c;"><span>일식/돈까스</span></li>
+				<li class="category" id="jokbalbossam" style="border-left:1px solid #bbb4b49c;"><span>족발/보쌈</span></li>
+				<li class="category" id="late-night-snack" style="border-left:1px solid #bbb4b49c;"><span>야식</span></li>
+				<li class="category" id="carb-snacks" style="border-left:1px solid #bbb4b49c;"><span>분식</span></li>
+				<li class="category" id="cafedesert" style="border-left:1px solid #bbb4b49c;"><span>카페/디저트</span></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="restaurant-search-info" style="height:56px; border-bottom:1px solid rgba(0,0,0,0.1);">
+	<div class="container" style="height:100%">
+		<div class="d-flex flex-row align-items-center pr-5" style="height:100%">
+			<div class="total-restaurant mt-2 ml-5 pl-5 mr-auto"  style="font-size:12px; width:300px;">
+				음식점 <span id="restaurant-count"></span>곳을 찾았습니다.
+			</div>
+
+			<div class="list-option">
+					<div class="dropdown">
+					  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="max-width:490px; height:36px; background-color:white; color:rgba(0,0,0,0.7); text-align:left;     border-color: rgba(0,0,0,0.2);">
+					    기본정렬순
+					  </button>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+					    <button class="dropdown-item" type="button" style="text-align:left;">별점순</button>
+					    <button class="dropdown-item" type="button" style="text-align:left;">리뷰많은순</button>
+					    <button class="dropdown-item" type="button" style="text-align:left;">최소 주문 금액순</button>
+					    <button class="dropdown-item" type="button" style="text-align:left;">거리순</button>
+					    <button class="dropdown-item" type="button" style="text-align:left;">배달 시간순</button>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extrascript %}
+<script src="{% static 'shop/js/script.js' %}?ver=3"></script>
+{% endblock %}

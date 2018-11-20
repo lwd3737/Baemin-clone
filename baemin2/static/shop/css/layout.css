@@ -1,0 +1,12 @@
+.category-menu{
+ 
+}
+
+#menu_list{
+ 	width:1000px !important;
+ 	height:60px !important;
+}
+
+#menu_list li span{
+	border-left:1px solid black !important;
+}

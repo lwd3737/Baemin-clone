@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="lim" horiz-adv-x="1000" >
+<font-face font-family="lim" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="facebook-squared" unicode="&#xf30e;" d="M752 770q44 0 76-31t32-75l0-646q0-44-32-76t-76-32l-162 0 0 310 114 0 0 134-114 0 0 70q0 30 28 30l86 0 0 152-96 0q-74 0-124-54t-50-132l0-66-104 0 0-134 104 0 0-310-326 0q-44 0-76 32t-32 76l0 646q0 44 32 75t76 31l644 0z" horiz-adv-x="860" />
+
+<glyph glyph-name="blogger-rect" unicode="&#xf315;" d="M196 850c-108 0-196-88-196-196l0-608c0-108 88-196 196-196l608 0c108 0 196 88 196 196l0 608c0 108-88 196-196 196l-608 0z m338-187c94-7 149-68 155-146 5-40 4-69-2-91 54-2 116-26 120-113l0-86c-5-75-32-168-169-188-31-4-65-1-110-1-45 1-85 1-119 1-139-3-216 58-216 189-1 44 0 93 0 152 0 38-1 78 0 115 1 7 0 15 1 23 6 84 74 133 153 144l187 1z m-156-117c-80-13-84-105 0-116l152 0c80 13 84 105 0 116l-152 0z m-35-253c-82-13-83-116 3-127l279-1c82 12 82 116-3 127l-279 1z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

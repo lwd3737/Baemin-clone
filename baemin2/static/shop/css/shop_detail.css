@@ -1,0 +1,394 @@
+.restaurant-info{
+	border:1px solid rgba(0,0,0,0.2);
+	height:171px;
+}
+
+.restaurant-title{
+	border-bottom:1px solid rgba(0,0,0,0.2);
+	font-size:15px;
+}
+
+.restaurant-content{
+
+}
+
+.restaurant-content > ul{
+	list-style:none;
+	padding:10px;
+}
+
+.restaurant-content > ul > li{
+	font-size:14px;
+	color:gray;
+}
+
+.restaurant-content > ul > li > span{
+	color:black;
+	font-size:13px;
+}
+
+.star-review{
+	color:rgba(0,0,0,0.1) !important;
+	font-size:15px !important;
+}
+
+.owner-intro-message{
+		border-width:0 1px 1px 1px;
+		border-style:solid;
+		border-color:rgba(0,0,0,0.15);
+		font-size:13px;
+		color:gray;
+		text-align:left;
+		padding-left:20px;
+		padding-top:13px;
+		height:44px;
+}
+
+.owner-intro-message > span{
+	font-weight:bold !important;
+	color:black;
+}
+
+.logo{
+	width:80px;
+	height:80px;
+	border:1px solid rgba(0,0,0,0.2);
+}
+
+/*restaurant-tab*/
+ul.restaurant-tab{
+	border:1px solid rgba(0,0,0,0.15);
+}
+
+ul li > a.nav-link{
+		color:black !important;
+		background-color:white !important;
+
+}
+
+#menu-tab{
+	width:99%;
+}
+
+div#menu{
+	position:relative;
+}
+
+.photo-menu-container{
+	overflow:scroll;
+	overflow-y:hidden;
+	white-space:nowrap;
+	max-width:686px;
+	height:215px;
+	border:1px solid rgba(0,0,0,0.15);
+}
+
+.photo-menu-items{
+
+}
+
+.photo-menu-items > span{
+	position:absolute;
+	z-index:1000;
+	display:inline-block;
+	width:30px;
+	height:30px;
+	border:1px solid rgba(0,0,0,0.15);
+	text-align:center;
+	padding-top:2px;
+	background-color:white;
+}
+
+.photo-menu-items > span:hover{
+	cursor:pointer;
+}
+
+.btn-left{
+	top:80px;
+	left:0px;
+}
+
+.btn-right{
+	top:80px;
+	right:0px;
+}
+
+.photo-slice{
+	width:896px;
+}
+
+.card-deck.card{
+	width:138px !important;
+	height:166px !important;
+}
+
+h4.card-title{
+	font-size:15px !important;
+	font-weight:bold;
+	margin-bottom:4px;
+}
+
+p.card-text{
+	font-size:14px;
+	font-weight:lighter;
+}
+
+/*메뉴 카테고리*/
+.menu-category-list > li{
+	padding:0;
+}
+
+a.category_menu_name{
+	color:black;
+	display:block;
+	width:100%;
+	height:48px;
+	padding:10px 15px;
+	font-size:18px;
+}
+
+a.category_menu_name:hover{
+	color:black;
+	text-decoration:none;
+}
+
+.collapse > ul > li{
+		padding:20px 15px;
+}
+
+.collapse > ul > li:hover{
+	cursor:pointer;
+}
+
+.collapse tr{
+	width:100%;
+}
+div.food-name{
+	font-weight:bold;
+	font-size:17px;
+}
+
+div.food-desc{
+	color:gray;
+	font-size:14px;
+	margin-bottom:5px;
+}
+
+div.food-price{
+	font-size:17px;
+}
+
+div.labels > a{
+	display:inline-block;
+	color:black;
+	margin:25px 0 15px 5px;
+	color:rgb(102, 102, 102);
+	font-size:13px;
+}
+
+div.labels > a:hover{
+	cursor:pointer;
+}
+
+/*장바구니*/
+.restaurant-cart{
+	margin-top:15px;
+}
+
+.sub-title{
+	width:330px;
+	height:41px;
+	margin-bottom:0;
+	background-color:#333;
+	color:white;
+	padding-left:15px;
+	padding-top:8px;
+	font-size:18px;
+}
+
+.cart-empty{
+	margin-top:0;
+	width:330px;
+	height:122px;
+	border:1px solid rgba(0,0,0,0.15);
+	text-align:center;
+	padding:50px;
+}
+
+.cart-btn{
+	width:330px;
+	height:46px;
+	background-color:rgb(51,51,51,0.17);
+	margin-top:10px;
+	color:white;
+	text-align:center;
+	padding-top:10px;
+	font-size:20px;
+}
+
+/*리뷰 탭*/
+.star-point-wrap{
+	border:1px solid rgba(0,0,0,0.15);
+	height:102px;
+	text-align:center;
+}
+
+.restaurant-star-point{
+	width:120px;
+	height:70px;
+	text-align:center;
+	margin-top:10px;
+	border-right:1px solid rgba(0,0,0,0.15);
+	padding-right:20px;
+	display:inline-block;
+
+}
+
+.restaurant-star-point > strong{
+	font-size:48px;
+	display:inline-block;
+	height:48px;
+	width:84px;
+	margin-bottom:2px;
+	line-height:1;
+}
+
+.restaurant-star-point > span{
+	color:rgba(0,0,0,0.1);
+}
+
+ul.star-point-list{
+	padding-left:20px;
+	display:inline-block;
+	list-style:none;
+}
+
+.star-point-list > li > .category-tit{
+		width:30px;
+}
+
+.star-point{
+	color:rgba(0,0,0,0.1);
+}
+
+.category-tit{
+	display:inline-block;
+	width:30px;
+	font-size:13px;
+	color:rgba(0,0,0,0.7);
+	text-align:left;
+}
+
+.star-point + .points{
+	color:orange;
+	margin-left:5px;
+}
+
+.review-count{
+	border:1px solid rgba(0,0,0,0.15);
+	margin-top:-1px;
+	padding:18px;
+	font-size:13px;
+	height:58px;
+	line-height:2;
+}
+
+.opt-btn{
+	display:inline-block;
+}
+
+.switch > input{
+	position:absolute;
+	visibility:hidden;
+}
+
+.switch > label{
+	display:inline-block;
+	width:56px;
+	height:26px;
+}
+
+.switch{
+	position:relative;
+}
+
+.switch > label::before,
+.switch > label::after{
+	display:block;
+	position:absolute;
+	content:"";
+
+}
+
+.switch > label::before{
+	background-color:#f1f1f1;
+	border-radius:28px;
+	width:58px;
+	height:29px;
+	left:4px;
+	border:1px solid rgba(0,0,0,0.1);
+}
+
+.switch > label::after{
+	background-color:#fff;
+	width:29px;
+	height:29px;
+	border:1px solid rgba(0,0,0,0.15);
+	border-radius:100%;
+	box-shadow:0.2px 0.5px 5px #989191;
+	margin-left:5px;
+}
+
+/*review list*/
+.review-item{
+	position:relative;
+	padding:30px 20px !important;
+}
+
+.review-id{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.review-list > li > div > a{
+		text-decoration:none;
+		color:gray;
+		position:absolute;
+		right:20px;
+}
+
+.category::before{
+	content:"|";
+	color:rgba(0,0,0,0.15);
+}
+
+.category-tit{
+	display:inline-block;
+	width:15px;
+}
+
+.category > .full{
+	display:inline-block;
+	width:15px;
+	color:orange;
+}
+
+.category > .points{
+	color:orange !important;
+	font-size:14px;
+}
+
+.review-comment{
+	color:rgba(0,0,0,0.7);
+}
+
+.review-time{
+	font-size:13px;
+	color:gray;
+	margin-left:5px;
+}
+
+/*주문표*/
+.restaurant-cart{
+	position:fixed;
+}

@@ -1,0 +1,66 @@
+{% extends 'shop/category_menu.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'shop/css/category_detail.css' %}?ver=1" />
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+	<div class="ranking-guide">
+		<p class="ml-5 pl-4 mb-1" style="font-size:14px;">요기요 음식 등록점</p>
+	</div>
+	<div class="row justify-content-center">
+		{% for shop in shop_list %}
+		<div class="col-sm-5 mx-3 my-2 pt-3 pl-2" style="border:1px solid rgba(0,0,0,0.2); height:108px">
+
+
+			<a class="restaurant-list" href="{% url 'shop:shop_detail' category.id shop.id %}"/>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								{% if shop.photo %}
+									<img src="{{ shop.photo.url }}" style="width:70px; height:70px; border:1px solid rgba(0,0,0,0.2);" />
+								{% else %}
+									<img src="" style="width:70px; height:70px; background-color:white;" 
+								{% endif %}
+							</td>
+							<td>
+								<div class="restaurant_info mt-2 ml-2">
+									<div class="restaurant_name">
+										{{ shop.name }}
+									</div>
+									<div class="stars">
+										
+									</div>
+									<ul class="pl-0" style="list-style:none; display:flex;">
+										<li style="color:red; font-size:12px;">요기서결제</li>
+										<li class="mx-1"style="color:rgba(0,0,0,0.2); font-size:12px;">|</li>
+										<li class="min-price" style="font-size:12px; color:gray;">
+											{{ shop.shopdesc.min_order_amount|intcomma }}원 이상 배달
+										</li>
+										{% if shop.shopdesc.delivery_time %}
+										<li class="delivery-time" style="position:relative; left:160px; top:30px; font-size:11px; color:gray;">
+											{{ shop.shopdesc.delivery_time }}
+										</li>
+										{% endif %}
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+
+	<form class="menu-active" action="" method="post">
+		
+	</form>
+</div>
+{% endblock %}
+

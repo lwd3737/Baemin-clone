@@ -1,0 +1,22 @@
+{
+  "name": "lim",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "47bd87a650e95b97f947d275ed968efe",
+      "css": "facebook-squared",
+      "code": 62222,
+      "src": "entypo"
+    },
+    {
+      "uid": "a38dfae0ec2d11e1aff10800200c9a66",
+      "css": "blogger-rect",
+      "code": 62229,
+      "src": "brandico"
+    }
+  ]
+}

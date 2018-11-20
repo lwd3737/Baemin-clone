@@ -1,0 +1,19 @@
+div.card h5.card-title{
+	font-weight:bold;
+}
+
+div.card small.card-text{
+	color:gray;
+}
+
+div.card{
+	margin:0 10px 10px 0;
+}
+
+div.card:hover{
+	cursor:pointer;
+}
+
+div.card a{
+	color:black !important;
+}
